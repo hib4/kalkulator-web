@@ -56,12 +56,21 @@ function performCalculation() {
         result = parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
     }
 
+    const history = {
+        firstNumber: calculator.firstNumber,
+        secondNumber: calculator.displayNumber,
+        operator: calculator.operator,
+        result: result
+    }
+    
+    putHistory(history);
     calculator.displayNumber = result;
+    renderHistory();
 }
 
 const buttons = document.querySelectorAll(".button");
 for (let button of buttons) {
-    button.addEventListener('click', function(event) {
+    button.addEventListener('click', function (event) {
         const target = event.target;
 
         if (target.classList.contains('clear')) {
